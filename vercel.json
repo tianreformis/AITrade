@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  // Waktu dalam UTC. ET = UTC-4 (Mar–Nov) / UTC-5 (Nov–Mar).
+  // Sesuaikan ±1 jam saat winter. Plan Hobby Vercel maks 2 cron —
+  // jika demikian, pertahankan 13:28 (scan) & 14:10 (confirm+results manual).
+  "crons": [
+    { "path": "/api/cron/scan?stage=scan", "schedule": "15 13 * * 1-5" },
+    { "path": "/api/cron/scan?stage=scan", "schedule": "28 13 * * 1-5" },
+    { "path": "/api/cron/scan?stage=confirm", "schedule": "0 14 * * 1-5" },
+    { "path": "/api/cron/scan?stage=results", "schedule": "10 14 * * 1-5" }
+  ]
+}
